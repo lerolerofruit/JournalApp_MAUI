@@ -1,0 +1,214 @@
+﻿using JournalApp.Services;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace JournalApp.Views
+{
+    public partial class DashboardPage : Page
+    {
+        private readonly JournalService _journalService;
+
+        public DashboardPage(JournalService journalService)
+        {
+            InitializeComponent();
+            _journalService = journalService;
+            LoadDashboardData();
+        }
+
+        private async void LoadDashboardData()
+        {
+            try
+            {
+                // Get total entries count
+                var totalEntries = await _journalService.GetTotalEntriesCountAsync();
+                txtTotalEntries.Text = totalEntries.ToString();
+
+                // Get streak information
+                var streak = await _journalService.GetStreakAsync();
+                txtCurrentStreak.Text = streak.CurrentStreak.ToString();
+                txtLongestStreak.Text = streak.LongestStreak.ToString();
+
+                // Get this month's entries count
+                var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                var thisMonthEntries = await _journalService.FilterEntriesAsync(
+                    startDate: firstDayOfMonth, 
+                    endDate: DateTime.Now);
+                txtThisMonth.Text = thisMonthEntries.Count.ToString();
+
+                // Load recent entries
+                var recentEntries = await _journalService.GetEntriesPaginatedAsync(1, 5);
+                lstRecentEntries.ItemsSource = recentEntries;
+
+                // Load weekly activity chart
+                await LoadWeeklyActivityChart();
+
+                // Load mood distribution chart
+                await LoadMoodDistributionChart();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading dashboard data: {ex.Message}", "Error", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async System.Threading.Tasks.Task LoadWeeklyActivityChart()
+        {
+            try
+            {
+                // Get last 7 days data
+                var endDate = DateTime.Today;
+                var startDate = endDate.AddDays(-6);
+
+                var entries = await _journalService.FilterEntriesAsync(startDate, endDate);
+
+                // Group by day
+                var dailyData = new Dictionary<string, int>();
+                for (int i = 0; i < 7; i++)
+                {
+                    var date = startDate.AddDays(i);
+                    var dayName = date.ToString("ddd");
+                    dailyData[dayName] = entries.Count(e => e.Date.Date == date.Date);
+                }
+
+                // Create chart series with gradient
+                var series = new ISeries[]
+                {
+                    new ColumnSeries<int>
+                    {
+                        Name = "Entries",
+                        Values = dailyData.Values.ToArray(),
+                        Fill = new LinearGradientPaint(
+                            new SKColor(102, 126, 234),
+                            new SKColor(118, 75, 162),
+                            new SKPoint(0, 0),
+                            new SKPoint(0, 1)),
+                        Stroke = null,
+                        MaxBarWidth = 50,
+                        Rx = 8,
+                        Ry = 8
+                    }
+                };
+
+                chartWeeklyActivity.Series = series;
+                chartWeeklyActivity.XAxes = new[]
+                {
+                    new Axis
+                    {
+                        Labels = dailyData.Keys.ToArray(),
+                        LabelsRotation = 0,
+                        TextSize = 12,
+                        LabelsPaint = new SolidColorPaint(SKColors.Gray)
+                    }
+                };
+                chartWeeklyActivity.YAxes = new[]
+                {
+                    new Axis
+                    {
+                        MinLimit = 0,
+                        TextSize = 12,
+                        LabelsPaint = new SolidColorPaint(SKColors.Gray)
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading weekly chart: {ex.Message}");
+            }
+        }
+
+        private async System.Threading.Tasks.Task LoadMoodDistributionChart()
+        {
+            try
+            {
+                // Get last 30 days data
+                var endDate = DateTime.Today;
+                var startDate = endDate.AddDays(-29);
+
+                var entries = await _journalService.FilterEntriesAsync(startDate, endDate);
+
+                if (!entries.Any())
+                {
+                    return;
+                }
+
+                // Count mood categories
+                var positive = entries.Count(e => e.PrimaryMood?.Category == "Positive");
+                var neutral = entries.Count(e => e.PrimaryMood?.Category == "Neutral");
+                var negative = entries.Count(e => e.PrimaryMood?.Category == "Negative");
+
+                var series = new ISeries[]
+                {
+                    new PieSeries<int>
+                    {
+                        Name = "Positive",
+                        Values = new[] { positive },
+                        Fill = new SolidColorPaint(new SKColor(39, 174, 96)),
+                        DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                        DataLabelsSize = 14,
+                        DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+                        DataLabelsFormatter = point => $"{point.PrimaryValue}"
+                    },
+                    new PieSeries<int>
+                    {
+                        Name = "Neutral",
+                        Values = new[] { neutral },
+                        Fill = new SolidColorPaint(new SKColor(149, 165, 166)),
+                        DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                        DataLabelsSize = 14,
+                        DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+                        DataLabelsFormatter = point => $"{point.PrimaryValue}"
+                    },
+                    new PieSeries<int>
+                    {
+                        Name = "Negative",
+                        Values = new[] { negative },
+                        Fill = new SolidColorPaint(new SKColor(231, 76, 60)),
+                        DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                        DataLabelsSize = 14,
+                        DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+                        DataLabelsFormatter = point => $"{point.PrimaryValue}"
+                    }
+                };
+
+                chartMoodDistribution.Series = series;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading mood chart: {ex.Message}");
+            }
+        }
+
+        private void LstRecentEntries_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstRecentEntries.SelectedItem != null)
+            {
+                var entry = (Models.JournalEntry)lstRecentEntries.SelectedItem;
+                NavigationService?.Navigate(new EntryEditorPage(_journalService, entry));
+            }
+        }
+
+        private async void BtnTodayEntry_Click(object sender, RoutedEventArgs e)
+        {
+            var todayEntry = await _journalService.GetEntryByDateAsync(DateTime.Today);
+            NavigationService?.Navigate(new EntryEditorPage(_journalService, todayEntry));
+        }
+
+        private void BtnViewCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new CalendarPage(_journalService));
+        }
+
+        private void BtnViewAnalytics_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new AnalyticsPage(_journalService));
+        }
+    }
+}

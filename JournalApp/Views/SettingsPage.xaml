@@ -1,0 +1,42 @@
+<Page x:Class="JournalApp.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Settings" Background="{DynamicResource BackgroundBrush}">
+    <StackPanel Margin="30" MaxWidth="600">
+        <TextBlock Text="Settings" FontSize="28" FontWeight="Bold" 
+                  Foreground="{DynamicResource TextBrush}" Margin="0,0,0,20"/>
+
+        <!-- Theme Selection -->
+        <Border Background="{DynamicResource CardBrush}" CornerRadius="8" Padding="20" 
+                Margin="0,0,0,20" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}">
+            <StackPanel>
+                <TextBlock Text="Theme" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"
+                          Foreground="{DynamicResource TextBrush}"/>
+                <ComboBox x:Name="cmbTheme" SelectionChanged="CmbTheme_SelectionChanged">
+                    <ComboBoxItem x:Name="cmbLight" Content="Light"/>
+                    <ComboBoxItem x:Name="cmbDark" Content="Dark"/>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+
+        <!-- Change Password -->
+        <Border Background="{DynamicResource CardBrush}" CornerRadius="8" Padding="20"
+                BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}">
+            <StackPanel>
+                <TextBlock Text="Change Password" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"
+                          Foreground="{DynamicResource TextBrush}"/>
+
+                <TextBlock Text="Current Password" Margin="0,0,0,5" 
+                          Foreground="{DynamicResource TextBrush}"/>
+                <PasswordBox x:Name="txtOldPassword" Padding="8" Margin="0,0,0,10"/>
+
+                <TextBlock Text="New Password" Margin="0,0,0,5" 
+                          Foreground="{DynamicResource TextBrush}"/>
+                <PasswordBox x:Name="txtNewPassword" Padding="8" Margin="0,0,0,15"/>
+
+                <Button x:Name="btnChangePassword" Content="Change Password" Padding="15,8" 
+                       Click="BtnChangePassword_Click" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Page>

@@ -1,0 +1,76 @@
+﻿using JournalApp.Services;
+using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace JournalApp.Views
+{
+    public partial class DashboardPage : Page
+    {
+        private readonly JournalService _journalService;
+
+        public DashboardPage(JournalService journalService)
+        {
+            InitializeComponent();
+            _journalService = journalService;
+            LoadDashboardData();
+        }
+
+        private async void LoadDashboardData()
+        {
+            try
+            {
+                // Get total entries count
+                var totalEntries = await _journalService.GetTotalEntriesCountAsync();
+                txtTotalEntries.Text = totalEntries.ToString();
+
+                // Get streak information
+                var streak = await _journalService.GetStreakAsync();
+                txtCurrentStreak.Text = streak.CurrentStreak.ToString();
+                txtLongestStreak.Text = streak.LongestStreak.ToString();
+
+                // Get this month's entries count
+                var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                var thisMonthEntries = await _journalService.FilterEntriesAsync(
+                    startDate: firstDayOfMonth, 
+                    endDate: DateTime.Now);
+                txtThisMonth.Text = thisMonthEntries.Count.ToString();
+
+                // Load recent entries
+                var recentEntries = await _journalService.GetEntriesPaginatedAsync(1, 5);
+                lstRecentEntries.ItemsSource = recentEntries;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading dashboard data: {ex.Message}", "Error", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LstRecentEntries_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstRecentEntries.SelectedItem != null)
+            {
+                var entry = (Models.JournalEntry)lstRecentEntries.SelectedItem;
+                NavigationService?.Navigate(new EntryEditorPage(_journalService, entry));
+            }
+        }
+
+        private async void BtnTodayEntry_Click(object sender, RoutedEventArgs e)
+        {
+            var todayEntry = await _journalService.GetEntryByDateAsync(DateTime.Today);
+            NavigationService?.Navigate(new EntryEditorPage(_journalService, todayEntry));
+        }
+
+        private void BtnViewCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new CalendarPage(_journalService));
+        }
+
+        private void BtnViewAnalytics_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new AnalyticsPage(_journalService));
+        }
+    }
+}

@@ -1,0 +1,438 @@
+﻿<Page x:Class="JournalApp.Views.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      Title="Dashboard"
+      Background="{DynamicResource BackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30">
+            <TextBlock Text="Dashboard" 
+                      FontSize="32" 
+                      FontWeight="Bold" 
+                      Foreground="{DynamicResource TextBrush}"
+                      Margin="0,0,0,25"/>
+
+            <!-- Stats Cards with Icons and Gradients -->
+            <Grid Margin="0,0,0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Total Entries Card -->
+                <Border Grid.Column="0" CornerRadius="12" Padding="25" Margin="0,0,12,0"
+                        BorderThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#667EEA" Offset="0"/>
+                            <GradientStop Color="#764BA2" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#40000000" BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="📝" FontSize="36" HorizontalAlignment="Left" 
+                                  Margin="0,0,0,10"/>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                            <TextBlock x:Name="txtTotalEntries" Text="0" 
+                                      FontSize="38" FontWeight="Bold" 
+                                      Foreground="White"/>
+                            <TextBlock Text="Total Entries" 
+                                      FontSize="13" 
+                                      Foreground="#E0FFFFFF"
+                                      Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Current Streak Card -->
+                <Border Grid.Column="1" CornerRadius="12" Padding="25" Margin="0,0,12,0"
+                        BorderThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#F093FB" Offset="0"/>
+                            <GradientStop Color="#F5576C" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#40000000" BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="🔥" FontSize="36" HorizontalAlignment="Left" 
+                                  Margin="0,0,0,10"/>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                            <TextBlock x:Name="txtCurrentStreak" Text="0" 
+                                      FontSize="38" FontWeight="Bold" 
+                                      Foreground="White"/>
+                            <TextBlock Text="Current Streak" 
+                                      FontSize="13" 
+                                      Foreground="#E0FFFFFF"
+                                      Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Longest Streak Card -->
+                <Border Grid.Column="2" CornerRadius="12" Padding="25" Margin="0,0,12,0"
+                        BorderThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4FACFE" Offset="0"/>
+                            <GradientStop Color="#00F2FE" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#40000000" BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="🏆" FontSize="36" HorizontalAlignment="Left" 
+                                  Margin="0,0,0,10"/>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                            <TextBlock x:Name="txtLongestStreak" Text="0" 
+                                      FontSize="38" FontWeight="Bold" 
+                                      Foreground="White"/>
+                            <TextBlock Text="Longest Streak" 
+                                      FontSize="13" 
+                                      Foreground="#E0FFFFFF"
+                                      Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- This Month Card -->
+                <Border Grid.Column="3" CornerRadius="12" Padding="25"
+                        BorderThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FA709A" Offset="0"/>
+                            <GradientStop Color="#FEE140" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#40000000" BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="📆" FontSize="36" HorizontalAlignment="Left" 
+                                  Margin="0,0,0,10"/>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                            <TextBlock x:Name="txtThisMonth" Text="0" 
+                                      FontSize="38" FontWeight="Bold" 
+                                      Foreground="White"/>
+                            <TextBlock Text="This Month" 
+                                      FontSize="13" 
+                                      Foreground="#E0FFFFFF"
+                                      Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Charts Section -->
+            <Grid Margin="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Weekly Activity Chart -->
+                <Border Grid.Column="0" Background="{DynamicResource CardBrush}" 
+                        CornerRadius="12" Padding="25" Margin="0,0,12,0"
+                        BorderThickness="0">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#20000000" BlurRadius="15" ShadowDepth="3" Opacity="0.2"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="📊 Weekly Activity" 
+                                  FontSize="20" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{DynamicResource TextBrush}"
+                                  Margin="0,0,0,20"/>
+                        <lvc:CartesianChart x:Name="chartWeeklyActivity" 
+                                           Height="250"
+                                           LegendLocation="None"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Mood Distribution Pie Chart -->
+                <Border Grid.Column="1" Background="{DynamicResource CardBrush}" 
+                        CornerRadius="12" Padding="25"
+                        BorderThickness="0">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#20000000" BlurRadius="15" ShadowDepth="3" Opacity="0.2"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="😊 Mood Split" 
+                                  FontSize="20" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{DynamicResource TextBrush}"
+                                  Margin="0,0,0,20"/>
+                        <lvc:PieChart x:Name="chartMoodDistribution" 
+                                     Height="250"
+                                     LegendLocation="Bottom"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Recent Entries with Enhanced Design -->
+            <Border Background="{DynamicResource CardBrush}" 
+                    CornerRadius="12" Padding="25" Margin="0,0,0,25"
+                    BorderThickness="0">
+                <Border.Effect>
+                    <DropShadowEffect Color="#20000000" BlurRadius="15" ShadowDepth="3" Opacity="0.2"/>
+                </Border.Effect>
+                <StackPanel>
+                    <Grid Margin="0,0,0,20">
+                        <TextBlock Text="📖 Recent Entries" 
+                                  FontSize="20" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{DynamicResource TextBrush}"
+                                  HorizontalAlignment="Left"/>
+                        <Button Content="View All →" 
+                               HorizontalAlignment="Right"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Foreground="{DynamicResource TextBrush}"
+                               Cursor="Hand"
+                               FontWeight="SemiBold"
+                               Click="BtnViewCalendar_Click"/>
+                    </Grid>
+
+                    <ListView x:Name="lstRecentEntries" 
+                             BorderThickness="0"
+                             Background="Transparent"
+                             SelectionMode="Single"
+                             MouseDoubleClick="LstRecentEntries_MouseDoubleClick"
+                             MaxHeight="350">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0,0,0,10"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Border Background="{TemplateBinding Background}"
+                                                   BorderThickness="0"
+                                                   CornerRadius="8"
+                                                   Padding="15">
+                                                <ContentPresenter/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Date Badge -->
+                                    <Border Grid.Column="0" Background="#667EEA" 
+                                           CornerRadius="8" Padding="10" 
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,15,0">
+                                        <StackPanel HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Date, StringFormat='MMM'}" 
+                                                      FontSize="11" 
+                                                      FontWeight="Bold"
+                                                      Foreground="White"
+                                                      HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Date, StringFormat='dd'}" 
+                                                      FontSize="20" 
+                                                      FontWeight="Bold"
+                                                      Foreground="White"
+                                                      HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Content -->
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Title}" 
+                                                  FontSize="16"
+                                                  FontWeight="SemiBold"
+                                                  Foreground="{DynamicResource TextBrush}"
+                                                  TextTrimming="CharacterEllipsis"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <Border Background="#E8F5E9" Padding="6,3" CornerRadius="4" Margin="0,0,8,0">
+                                                <TextBlock Text="{Binding PrimaryMood.Name}" 
+                                                          FontSize="11" 
+                                                          Foreground="#2E7D32"/>
+                                            </Border>
+                                            <TextBlock Text="{Binding WordCount, StringFormat='{}{0} words'}" 
+                                                      FontSize="11" 
+                                                      Foreground="{DynamicResource SecondaryTextBrush}"
+                                                      VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Arrow Icon -->
+                                    <TextBlock Grid.Column="2" Text="→" 
+                                              FontSize="20" 
+                                              Foreground="{DynamicResource SecondaryTextBrush}"
+                                              VerticalAlignment="Center"
+                                              Margin="15,0,0,0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <!-- Quick Actions with Modern Design -->
+            <Border Background="{DynamicResource CardBrush}" 
+                    CornerRadius="12" Padding="25"
+                    BorderThickness="0">
+                <Border.Effect>
+                    <DropShadowEffect Color="#20000000" BlurRadius="15" ShadowDepth="3" Opacity="0.2"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="⚡ Quick Actions" 
+                              FontSize="20" 
+                              FontWeight="SemiBold"
+                              Foreground="{DynamicResource TextBrush}"
+                              Margin="0,0,0,20"/>
+
+                    <UniformGrid Columns="3" HorizontalAlignment="Stretch">
+                        <Button x:Name="btnTodayEntry" 
+                               Margin="0,0,10,0" Padding="20,15"
+                               Background="#667EEA"
+                               Foreground="White"
+                               BorderThickness="0"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Cursor="Hand"
+                               Click="BtnTodayEntry_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}"
+                                                       CornerRadius="8"
+                                                       Padding="{TemplateBinding Padding}">
+                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                                    VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#7C8FEE"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="✏️ " FontSize="16" Margin="0,0,8,0"/>
+                                <TextBlock Text="Today's Entry"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="btnViewCalendar" 
+                               Margin="0,0,10,0" Padding="20,15"
+                               Background="#4FACFE"
+                               Foreground="White"
+                               BorderThickness="0"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Cursor="Hand"
+                               Click="BtnViewCalendar_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}"
+                                                       CornerRadius="8"
+                                                       Padding="{TemplateBinding Padding}">
+                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                                    VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#6FBAFE"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="📅 " FontSize="16" Margin="0,0,8,0"/>
+                                <TextBlock Text="View Calendar"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="btnViewAnalytics" 
+                               Padding="20,15"
+                               Background="#F093FB"
+                               Foreground="White"
+                               BorderThickness="0"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Cursor="Hand"
+                               Click="BtnViewAnalytics_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}"
+                                                       CornerRadius="8"
+                                                       Padding="{TemplateBinding Padding}">
+                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                                    VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F3A6FB"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="📊 " FontSize="16" Margin="0,0,8,0"/>
+                                <TextBlock Text="View Analytics"/>
+                            </StackPanel>
+                        </Button>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

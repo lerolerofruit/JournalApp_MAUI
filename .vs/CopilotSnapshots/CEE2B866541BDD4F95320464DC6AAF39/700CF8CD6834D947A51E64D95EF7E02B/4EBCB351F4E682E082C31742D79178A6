@@ -1,0 +1,135 @@
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
+using JournalApp.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace JournalApp.Services
+{
+    public class PdfExportService
+    {
+        public void ExportEntriesToPdf(List<JournalEntry> entries, string filePath)
+        {
+            // Ensure directory exists
+            var directory = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            // Create PDF with proper writer properties
+            var writerProperties = new WriterProperties();
+            using (var writer = new PdfWriter(filePath, writerProperties))
+            using (var pdf = new PdfDocument(writer))
+            using (var document = new Document(pdf))
+            {
+                // Set default font to avoid licensing issues
+                var font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+                document.SetFont(font);
+                // Title
+                var title = new Paragraph("Journal Entries Export")
+                    .SetFontSize(24)
+                    .SetBold()
+                    .SetTextAlignment(TextAlignment.CENTER);
+                document.Add(title);
+
+                // Date range
+                if (entries.Any())
+                {
+                    var dateRange = new Paragraph($"From {entries.Min(e => e.Date):d} to {entries.Max(e => e.Date):d}")
+                        .SetFontSize(12)
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetMarginBottom(20);
+                    document.Add(dateRange);
+                }
+
+                // Entries
+                foreach (var entry in entries.OrderBy(e => e.Date))
+                {
+                    // Date header
+                    var dateHeader = new Paragraph(entry.Date.ToString("dddd, MMMM dd, yyyy"))
+                        .SetFontSize(16)
+                        .SetBold()
+                        .SetMarginTop(15);
+                    document.Add(dateHeader);
+
+                    // Title
+                    if (!string.IsNullOrWhiteSpace(entry.Title))
+                    {
+                        var entryTitle = new Paragraph(entry.Title)
+                            .SetFontSize(14)
+                            .SetBold();
+                        document.Add(entryTitle);
+                    }
+
+                    // Mood
+                    var moodText = $"Mood: {entry.PrimaryMood?.Name}";
+                    if (entry.SecondaryMood1 != null)
+                    {
+                        moodText += $", {entry.SecondaryMood1.Name}";
+                    }
+                    if (entry.SecondaryMood2 != null)
+                    {
+                        moodText += $", {entry.SecondaryMood2.Name}";
+                    }
+
+                    var mood = new Paragraph(moodText)
+                        .SetFontSize(10)
+                        .SetItalic();
+                    document.Add(mood);
+
+                    // Category
+                    if (entry.Category != null)
+                    {
+                        var category = new Paragraph($"Category: {entry.Category.Name}")
+                            .SetFontSize(10)
+                            .SetItalic();
+                        document.Add(category);
+                    }
+
+                    // Tags
+                    if (!string.IsNullOrWhiteSpace(entry.TagIds) && entry.Tags.Any())
+                    {
+                        var tagsText = $"Tags: {string.Join(", ", entry.Tags.Select(t => t.Name))}";
+                        var tags = new Paragraph(tagsText)
+                            .SetFontSize(10)
+                            .SetItalic();
+                        document.Add(tags);
+                    }
+
+                    // Content
+                    var content = new Paragraph(entry.Content)
+                        .SetFontSize(11)
+                        .SetMarginTop(10)
+                        .SetMarginBottom(10);
+                    document.Add(content);
+
+                    // Metadata
+                    var metadata = new Paragraph($"Word Count: {entry.WordCount} | Created: {entry.CreatedAt:g} | Updated: {entry.UpdatedAt:g}")
+                        .SetFontSize(8)
+                        .SetItalic()
+                        .SetMarginBottom(15);
+                    document.Add(metadata);
+
+                    // Separator
+                    document.Add(new Paragraph("―――――――――――――――――――――――――――――――――――――――――――――――")
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetMarginBottom(10));
+                }
+
+                // Footer
+                var footer = new Paragraph($"Exported on {DateTime.Now:f}")
+                    .SetFontSize(8)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetMarginTop(20);
+                document.Add(footer);
+            }
+        }
+    }
+}

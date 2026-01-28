@@ -1,0 +1,348 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\views\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\views\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\views\\entryeditorpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\views\\entryeditorpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\services\\pdfexportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\services\\pdfexportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\views\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\views\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\services\\journalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\services\\journalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kaush\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Migrations\\20260128085209_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:JournalApp\\Migrations\\20260128085209_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\models\\journalentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\models\\journalentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\data\\journalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\data\\journalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\views\\searchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\views\\searchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|c:\\users\\kaush\\downloads\\journalapp_full_feature_source\\journalapp\\implementation_notes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{6A4C1D5A-0F71-4C7F-9A46-0A5D7C9B7C11}|JournalApp\\JournalApp.csproj|solutionrelative:journalapp\\implementation_notes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\App.xaml",
+              "RelativeDocumentMoniker": "JournalApp\\App.xaml",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\App.xaml",
+              "RelativeToolTip": "JournalApp\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-28T08:47:00.619Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DashboardPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\DashboardPage.xaml.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Views\\DashboardPage.xaml.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\DashboardPage.xaml.cs",
+              "RelativeToolTip": "JournalApp\\Views\\DashboardPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T09:12:01.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "JournalService.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Services\\JournalService.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Services\\JournalService.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Services\\JournalService.cs",
+              "RelativeToolTip": "JournalApp\\Services\\JournalService.cs",
+              "ViewState": "AgIAAAQCAAAAAAAAAAAYwAYCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T08:40:35.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "JournalApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "JournalApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAowEsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T20:13:26.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DashboardPage.xaml",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\DashboardPage.xaml",
+              "RelativeDocumentMoniker": "JournalApp\\Views\\DashboardPage.xaml",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\DashboardPage.xaml",
+              "RelativeToolTip": "JournalApp\\Views\\DashboardPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-28T09:11:30.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "JournalApp\\LoginWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "JournalApp\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T20:09:29.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "JournalApp\\LoginWindow.xaml",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\LoginWindow.xaml",
+              "RelativeToolTip": "JournalApp\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-27T19:54:53.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "XamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs",
+              "ToolTip": "C:\\Users\\kaush\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs",
+              "RelativeToolTip": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\aad6be2495d0a786b94b3514a5b6903407fe2d6a75ad7e505df6a9d895927867\\XamlReader.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAUwL0AAAAVAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T20:02:56.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EntryEditorPage.xaml",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\EntryEditorPage.xaml",
+              "RelativeDocumentMoniker": "JournalApp\\Views\\EntryEditorPage.xaml",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\EntryEditorPage.xaml",
+              "RelativeToolTip": "JournalApp\\Views\\EntryEditorPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-28T09:41:56.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PdfExportService.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Services\\PdfExportService.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Services\\PdfExportService.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Services\\PdfExportService.cs",
+              "RelativeToolTip": "JournalApp\\Services\\PdfExportService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAArwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T08:40:36.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\App.xaml.cs",
+              "RelativeDocumentMoniker": "JournalApp\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\App.xaml.cs",
+              "RelativeToolTip": "JournalApp\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T08:47:01.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Services\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "JournalApp\\Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAADwvzMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T08:40:32.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20260128085209_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Migrations\\20260128085209_InitialCreate.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Migrations\\20260128085209_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Migrations\\20260128085209_InitialCreate.cs",
+              "RelativeToolTip": "JournalApp\\Migrations\\20260128085209_InitialCreate.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T08:52:10.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "JournalContext.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Data\\JournalContext.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Data\\JournalContext.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Data\\JournalContext.cs",
+              "RelativeToolTip": "JournalApp\\Data\\JournalContext.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T08:40:13.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\.gitignore",
+              "RelativeDocumentMoniker": "JournalApp\\.gitignore",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\.gitignore",
+              "RelativeToolTip": "JournalApp\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-27T19:55:33.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "JournalEntry.cs",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Models\\JournalEntry.cs",
+              "RelativeDocumentMoniker": "JournalApp\\Models\\JournalEntry.cs",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Models\\JournalEntry.cs",
+              "RelativeToolTip": "JournalApp\\Models\\JournalEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T19:55:31.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SearchPage.xaml",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\SearchPage.xaml",
+              "RelativeDocumentMoniker": "JournalApp\\Views\\SearchPage.xaml",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\Views\\SearchPage.xaml",
+              "RelativeToolTip": "JournalApp\\Views\\SearchPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-27T19:55:17.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "JournalApp\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\MainWindow.xaml",
+              "RelativeToolTip": "JournalApp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-27T19:55:10.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IMPLEMENTATION_NOTES.md",
+              "DocumentMoniker": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\IMPLEMENTATION_NOTES.md",
+              "RelativeDocumentMoniker": "JournalApp\\IMPLEMENTATION_NOTES.md",
+              "ToolTip": "C:\\Users\\kaush\\Downloads\\JournalApp_Full_Feature_Source\\JournalApp\\IMPLEMENTATION_NOTES.md",
+              "RelativeToolTip": "JournalApp\\IMPLEMENTATION_NOTES.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-01-27T19:54:52.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Microsoft.NET.EolTargetFrameworks.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "ViewState": "AgIAABIAAAAAAAAAAAAcwCUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-01-27T19:22:43.352Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

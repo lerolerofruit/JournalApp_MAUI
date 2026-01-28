@@ -1,0 +1,197 @@
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
+using iText.Kernel.Geom;
+using JournalApp.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Path = System.IO.Path;
+
+namespace JournalApp.Services
+{
+    public class PdfExportService
+    {
+        public void ExportEntriesToPdf(List<JournalEntry> entries, string filePath)
+        {
+            PdfWriter writer = null;
+            PdfDocument pdf = null;
+            Document document = null;
+            FileStream fileStream = null;
+
+            try
+            {
+                // Ensure directory exists
+                var directory = Path.GetDirectoryName(filePath);
+                if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                // If file exists, delete it first
+                if (File.Exists(filePath))
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                    }
+                    catch
+                    {
+                        // If can't delete, try with a new name
+                        filePath = Path.Combine(directory, 
+                            Path.GetFileNameWithoutExtension(filePath) + "_" + DateTime.Now.Ticks + ".pdf");
+                    }
+                }
+
+                // Create file stream first
+                fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None);
+
+                // Create writer
+                writer = new PdfWriter(fileStream);
+
+                // Create PDF document
+                pdf = new PdfDocument(writer);
+
+                // Create layout document
+                document = new Document(pdf, PageSize.A4);
+                document.SetMargins(50, 50, 50, 50);
+
+                // Title
+                var title = new Paragraph("Journal Entries Export")
+                    .SetFontSize(24)
+                    .SetBold()
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetMarginBottom(10);
+                document.Add(title);
+
+                // Date range
+                if (entries.Any())
+                {
+                    var dateRange = new Paragraph($"From {entries.Min(e => e.Date):d} to {entries.Max(e => e.Date):d}")
+                        .SetFontSize(12)
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetMarginBottom(20);
+                    document.Add(dateRange);
+                }
+
+                // Entries
+                foreach (var entry in entries.OrderBy(e => e.Date))
+                {
+                    // Date header
+                    var dateHeader = new Paragraph(entry.Date.ToString("dddd, MMMM dd, yyyy"))
+                        .SetFontSize(16)
+                        .SetBold()
+                        .SetMarginTop(15);
+                    document.Add(dateHeader);
+
+                    // Title
+                    if (!string.IsNullOrWhiteSpace(entry.Title))
+                    {
+                        var entryTitle = new Paragraph(entry.Title)
+                            .SetFontSize(14)
+                            .SetBold();
+                        document.Add(entryTitle);
+                    }
+
+                    // Mood
+                    var moodText = $"Mood: {entry.PrimaryMood?.Name ?? "Not specified"}";
+                    if (entry.SecondaryMood1 != null)
+                    {
+                        moodText += $", {entry.SecondaryMood1.Name}";
+                    }
+                    if (entry.SecondaryMood2 != null)
+                    {
+                        moodText += $", {entry.SecondaryMood2.Name}";
+                    }
+
+                    var mood = new Paragraph(moodText)
+                        .SetFontSize(10)
+                        .SetItalic();
+                    document.Add(mood);
+
+                    // Category
+                    if (entry.Category != null)
+                    {
+                        var category = new Paragraph($"Category: {entry.Category.Name}")
+                            .SetFontSize(10)
+                            .SetItalic();
+                        document.Add(category);
+                    }
+
+                    // Tags
+                    if (!string.IsNullOrWhiteSpace(entry.TagIds) && entry.Tags?.Any() == true)
+                    {
+                        var tagsText = $"Tags: {string.Join(", ", entry.Tags.Select(t => t.Name))}";
+                        var tags = new Paragraph(tagsText)
+                            .SetFontSize(10)
+                            .SetItalic();
+                        document.Add(tags);
+                    }
+
+                    // Content
+                    var content = new Paragraph(entry.Content ?? "")
+                        .SetFontSize(11)
+                        .SetMarginTop(10)
+                        .SetMarginBottom(10);
+                    document.Add(content);
+
+                    // Metadata
+                    var metadata = new Paragraph($"Word Count: {entry.WordCount} | Created: {entry.CreatedAt:g} | Updated: {entry.UpdatedAt:g}")
+                        .SetFontSize(8)
+                        .SetItalic()
+                        .SetMarginBottom(15);
+                    document.Add(metadata);
+
+                    // Separator
+                    var separator = new Paragraph(new string('_', 80))
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetMarginBottom(10);
+                    document.Add(separator);
+                }
+
+                // Footer
+                var footer = new Paragraph($"Exported on {DateTime.Now:f}")
+                    .SetFontSize(8)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetMarginTop(20);
+                document.Add(footer);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to export PDF: {ex.Message}", ex);
+            }
+            finally
+            {
+                // Explicit cleanup in correct order
+                try
+                {
+                    document?.Close();
+                }
+                catch { }
+
+                try
+                                {
+                                    pdf?.Close();
+                                }
+                                catch { }
+
+                                try
+                                {
+                                    writer?.Close();
+                                }
+                                catch { }
+
+                                try
+                                {
+                                    fileStream?.Close();
+                                    fileStream?.Dispose();
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                }

@@ -1,0 +1,21 @@
+﻿using JournalApp.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Windows;
+
+namespace JournalApp
+{
+    public partial class App : Application
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Initialize database and create LoginWindow with required context
+            var context = new JournalContext();
+            context.Database.Migrate();
+
+            var loginWindow = new LoginWindow(context);
+            loginWindow.Show();
+        }
+    }
+}

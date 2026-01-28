@@ -1,0 +1,132 @@
+﻿using JournalApp.Data;
+using JournalApp.Services;
+using JournalApp.Views;
+using System.Windows;
+
+namespace JournalApp
+{
+    public partial class MainWindow : Window
+    {
+        private readonly JournalContext _context;
+        private readonly JournalService _journalService;
+        private readonly AuthenticationService _authService;
+        private readonly PdfExportService _pdfService;
+
+        public MainWindow(JournalContext context, JournalService journalService, 
+                         AuthenticationService authService, PdfExportService pdfService)
+        {
+            InitializeComponent();
+            _context = context;
+            _journalService = journalService;
+            _authService = authService;
+            _pdfService = pdfService;
+
+            ApplyTheme(_authService.CurrentUser?.Theme ?? "Light");
+            NavigateToDashboard();
+        }
+
+        private void BtnDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToDashboard();
+        }
+
+        private void BtnNewEntry_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new EntryEditorPage(_journalService));
+        }
+
+        private void BtnCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CalendarPage(_journalService));
+        }
+
+        private void BtnTimeline_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new TimelinePage(_journalService));
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SearchPage(_journalService));
+        }
+
+        private void BtnAnalytics_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AnalyticsPage(_journalService));
+        }
+
+        private void BtnExport_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ExportPage(_journalService, _pdfService));
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SettingsPage(_authService, this));
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to logout?", "Logout", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                _authService.Logout();
+                var loginWindow = new LoginWindow(_context);
+                loginWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void NavigateToDashboard()
+        {
+            MainFrame.Navigate(new DashboardPage(_journalService));
+        }
+
+        public void ApplyTheme(string theme)
+        {
+            var lightBg = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#F5F5F5"));
+            var darkBg = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#1E1E1E"));
+
+            var lightCard = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("White"));
+            var darkCard = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#2D2D30"));
+
+            var lightText = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#2C3E50"));
+            var darkText = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#E0E0E0"));
+
+            var lightSecondaryText = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#7F8C8D"));
+            var darkSecondaryText = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#A0A0A0"));
+
+            var lightHoverBg = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#F8F9FA"));
+            var darkHoverBg = new System.Windows.Media.SolidColorBrush(
+                (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#3A3A3A"));
+
+            if (theme == "Dark")
+            {
+                this.Resources["BackgroundBrush"] = darkBg;
+                this.Resources["CardBrush"] = darkCard;
+                this.Resources["TextBrush"] = darkText;
+                this.Resources["SecondaryTextBrush"] = darkSecondaryText;
+                this.Resources["HoverBackgroundBrush"] = darkHoverBg;
+            }
+            else
+            {
+                this.Resources["BackgroundBrush"] = lightBg;
+                this.Resources["CardBrush"] = lightCard;
+                this.Resources["TextBrush"] = lightText;
+                this.Resources["SecondaryTextBrush"] = lightSecondaryText;
+                this.Resources["HoverBackgroundBrush"] = lightHoverBg;
+            }
+        }
+    }
+}

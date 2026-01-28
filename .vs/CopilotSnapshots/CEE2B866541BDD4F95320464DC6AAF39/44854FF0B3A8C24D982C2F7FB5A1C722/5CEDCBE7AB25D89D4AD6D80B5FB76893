@@ -1,0 +1,224 @@
+﻿using JournalApp.Services;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Defaults;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+
+namespace JournalApp.Views
+{
+    public partial class DashboardPage : Page
+    {
+        private readonly JournalService _journalService;
+
+        public DashboardPage(JournalService journalService)
+        {
+            InitializeComponent();
+            _journalService = journalService;
+            LoadDashboardData();
+        }
+
+        private async void LoadDashboardData()
+        {
+            try
+            {
+                // Get total entries count
+                var totalEntries = await _journalService.GetTotalEntriesCountAsync();
+                txtTotalEntries.Text = totalEntries.ToString();
+
+                // Get streak information
+                var streak = await _journalService.GetStreakAsync();
+                txtCurrentStreak.Text = streak.CurrentStreak.ToString();
+                txtLongestStreak.Text = streak.LongestStreak.ToString();
+
+                // Get this month's entries count
+                var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                var thisMonthEntries = await _journalService.FilterEntriesAsync(
+                    startDate: firstDayOfMonth, 
+                    endDate: DateTime.Now);
+                txtThisMonth.Text = thisMonthEntries.Count.ToString();
+
+                // Load recent entries
+                var recentEntries = await _journalService.GetEntriesPaginatedAsync(1, 5);
+                lstRecentEntries.ItemsSource = recentEntries;
+
+                // Load weekly activity chart
+                await LoadWeeklyActivityChart();
+
+                // Load mood distribution chart
+                await LoadMoodDistributionChart();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading dashboard data: {ex.Message}", "Error", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async System.Threading.Tasks.Task LoadWeeklyActivityChart()
+        {
+            try
+            {
+                // Get last 7 days data
+                var endDate = DateTime.Today;
+                var startDate = endDate.AddDays(-6);
+
+                var entries = await _journalService.FilterEntriesAsync(startDate, endDate);
+
+                // Group by day
+                var dailyData = new List<string>();
+                var dailyValues = new ChartValues<double>();
+
+                for (int i = 0; i < 7; i++)
+                {
+                    var date = startDate.AddDays(i);
+                    dailyData.Add(date.ToString("ddd"));
+                    dailyValues.Add(entries.Count(e => e.Date.Date == date.Date));
+                }
+
+                var seriesCollection = new SeriesCollection
+                {
+                    new ColumnSeries
+                    {
+                        Title = "Entries",
+                        Values = dailyValues,
+                        Fill = new LinearGradientBrush
+                        {
+                            StartPoint = new Point(0, 0),
+                            EndPoint = new Point(0, 1),
+                            GradientStops = new GradientStopCollection
+                            {
+                                new GradientStop(Color.FromRgb(102, 126, 234), 0),
+                                new GradientStop(Color.FromRgb(118, 75, 162), 1)
+                            }
+                        },
+                        MaxColumnWidth = 50,
+                        DataLabels = true,
+                        LabelPoint = point => $"{point.Y}",
+                        Foreground = Application.Current.TryFindResource("TextBrush") as SolidColorBrush ?? new SolidColorBrush(Colors.Black)
+                    }
+                };
+
+                chartWeeklyActivity.Series = seriesCollection;
+
+                // Get text color for axes based on theme
+                var textColor = Application.Current.TryFindResource("SecondaryTextBrush") as SolidColorBrush 
+                    ?? new SolidColorBrush(Color.FromRgb(127, 140, 141));
+
+                chartWeeklyActivity.AxisX.Clear();
+                chartWeeklyActivity.AxisX.Add(new Axis
+                {
+                    Labels = dailyData,
+                    Separator = new LiveCharts.Wpf.Separator { Step = 1, IsEnabled = false },
+                    Foreground = textColor
+                });
+                chartWeeklyActivity.AxisY.Clear();
+                chartWeeklyActivity.AxisY.Add(new Axis
+                {
+                    MinValue = 0,
+                    Separator = new LiveCharts.Wpf.Separator(),
+                    Foreground = textColor
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading weekly chart: {ex.Message}");
+            }
+        }
+
+        private async System.Threading.Tasks.Task LoadMoodDistributionChart()
+        {
+            try
+            {
+                // Get last 30 days data
+                var endDate = DateTime.Today;
+                var startDate = endDate.AddDays(-29);
+
+                var entries = await _journalService.FilterEntriesAsync(startDate, endDate);
+
+                if (!entries.Any())
+                {
+                    return;
+                }
+
+                // Count mood categories
+                var positive = entries.Count(e => e.PrimaryMood?.Category == "Positive");
+                var neutral = entries.Count(e => e.PrimaryMood?.Category == "Neutral");
+                var negative = entries.Count(e => e.PrimaryMood?.Category == "Negative");
+
+                // Get text color for labels based on theme
+                var labelColor = Application.Current.TryFindResource("TextBrush") as SolidColorBrush 
+                    ?? new SolidColorBrush(Colors.Black);
+
+                var seriesCollection = new SeriesCollection
+                {
+                    new PieSeries
+                    {
+                        Title = "Positive",
+                        Values = new ChartValues<double> { positive },
+                        Fill = new SolidColorBrush(Color.FromRgb(39, 174, 96)),
+                        DataLabels = true,
+                        LabelPoint = point => $"{point.Y}",
+                        Foreground = labelColor
+                    },
+                    new PieSeries
+                    {
+                        Title = "Neutral",
+                        Values = new ChartValues<double> { neutral },
+                        Fill = new SolidColorBrush(Color.FromRgb(149, 165, 166)),
+                        DataLabels = true,
+                        LabelPoint = point => $"{point.Y}",
+                        Foreground = labelColor
+                    },
+                    new PieSeries
+                    {
+                        Title = "Negative",
+                        Values = new ChartValues<double> { negative },
+                        Fill = new SolidColorBrush(Color.FromRgb(231, 76, 60)),
+                        DataLabels = true,
+                        LabelPoint = point => $"{point.Y}",
+                        Foreground = labelColor
+                    }
+                };
+
+                chartMoodDistribution.Series = seriesCollection;
+
+                // Update legend text color
+                chartMoodDistribution.Foreground = labelColor;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading mood chart: {ex.Message}");
+            }
+        }
+
+        private void LstRecentEntries_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstRecentEntries.SelectedItem != null)
+            {
+                var entry = (Models.JournalEntry)lstRecentEntries.SelectedItem;
+                NavigationService?.Navigate(new EntryEditorPage(_journalService, entry));
+            }
+        }
+
+        private async void BtnTodayEntry_Click(object sender, RoutedEventArgs e)
+        {
+            var todayEntry = await _journalService.GetEntryByDateAsync(DateTime.Today);
+            NavigationService?.Navigate(new EntryEditorPage(_journalService, todayEntry));
+        }
+
+        private void BtnViewCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new CalendarPage(_journalService));
+        }
+
+        private void BtnViewAnalytics_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new AnalyticsPage(_journalService));
+        }
+    }
+}

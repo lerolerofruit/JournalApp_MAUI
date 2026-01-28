@@ -1,0 +1,326 @@
+﻿<Page x:Class="JournalApp.Views.EntryEditorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Journal Entry"
+      Background="{DynamicResource BackgroundBrush}">
+
+    <Page.Resources>
+        <!-- Input Control Style -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               CornerRadius="6">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                        Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#667EEA"/>
+                                <Setter Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ComboBox Style -->
+        <Style x:Key="ModernComboBox" TargetType="ComboBox">
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <!-- Button Style -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#667EEA"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                               CornerRadius="6"
+                               Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7C8FEE"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               CornerRadius="6"
+                               Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource HoverBackgroundBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DeleteButton" TargetType="Button">
+            <Setter Property="Background" Value="#E74C3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                               CornerRadius="6"
+                               Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F25C4E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MaxWidth="900"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel HorizontalAlignment="Stretch">
+                <!-- Header -->
+                <Grid Margin="0,0,0,25">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Background="#667EEA" Width="4" Height="32" CornerRadius="2" 
+                               Margin="0,0,12,0"/>
+                        <TextBlock Text="✍️ Journal Entry" 
+                                  FontSize="28" 
+                                  FontWeight="Bold" 
+                                  Foreground="{DynamicResource TextBrush}"
+                                  VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Main Content Card -->
+                <Border Background="{DynamicResource CardBrush}" 
+                       CornerRadius="12" 
+                       Padding="30"
+                       BorderThickness="0">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#20000000" BlurRadius="15" ShadowDepth="3" Opacity="0.2"/>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Top Section: Date and Title -->
+                        <Grid Grid.Row="0" Margin="0,0,0,25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                                <TextBlock Text="📅 Date" 
+                                          FontWeight="SemiBold" 
+                                          FontSize="13"
+                                          Margin="0,0,0,8" 
+                                          Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                <DatePicker x:Name="dpDate" 
+                                           Padding="12,10"
+                                           FontSize="14"
+                                           Background="{DynamicResource CardBrush}"
+                                           Foreground="{DynamicResource TextBrush}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="📝 Title (Optional)" 
+                                          FontWeight="SemiBold" 
+                                          FontSize="13"
+                                          Margin="0,0,0,8"
+                                          Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                <TextBox x:Name="txtTitle" 
+                                        Style="{StaticResource ModernTextBox}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Middle Section: Content and Metadata -->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*" MinWidth="280"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Content Area -->
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="✨ Your Thoughts" 
+                                          FontWeight="SemiBold" 
+                                          FontSize="13"
+                                          Margin="0,0,0,8"
+                                          Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                <TextBox x:Name="txtContent" 
+                                        AcceptsReturn="True" 
+                                        TextWrapping="Wrap" 
+                                        MinHeight="320" 
+                                        Style="{StaticResource ModernTextBox}"
+                                        VerticalScrollBarVisibility="Auto"
+                                        FontSize="14"/>
+                            </StackPanel>
+
+                            <!-- Metadata Sidebar -->
+                            <Border Grid.Column="2" 
+                                   Background="{DynamicResource BackgroundBrush}" 
+                                   CornerRadius="8" 
+                                   Padding="20">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <StackPanel>
+                                        <!-- Primary Mood -->
+                                        <TextBlock Text="😊 Primary Mood *" 
+                                                  FontWeight="SemiBold" 
+                                                  FontSize="13"
+                                                  Margin="0,0,0,8"
+                                                  Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                        <ComboBox x:Name="cmbPrimaryMood" 
+                                                 DisplayMemberPath="Name" 
+                                                 Style="{StaticResource ModernComboBox}"
+                                                 Margin="0,0,0,20"/>
+
+                                        <!-- Secondary Moods -->
+                                        <TextBlock Text="🎭 Secondary Moods" 
+                                                  FontWeight="SemiBold" 
+                                                  FontSize="13"
+                                                  Margin="0,0,0,8"
+                                                  Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                        <ComboBox x:Name="cmbSecondaryMood1" 
+                                                 DisplayMemberPath="Name" 
+                                                 Style="{StaticResource ModernComboBox}"
+                                                 Margin="0,0,0,10"/>
+                                        <ComboBox x:Name="cmbSecondaryMood2" 
+                                                 DisplayMemberPath="Name" 
+                                                 Style="{StaticResource ModernComboBox}"
+                                                 Margin="0,0,0,20"/>
+
+                                        <!-- Category -->
+                                        <TextBlock Text="📂 Category" 
+                                                  FontWeight="SemiBold" 
+                                                  FontSize="13"
+                                                  Margin="0,0,0,8"
+                                                  Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                        <ComboBox x:Name="cmbCategory" 
+                                                 DisplayMemberPath="Name" 
+                                                 Style="{StaticResource ModernComboBox}"
+                                                 Margin="0,0,0,20"/>
+
+                                        <!-- Tags -->
+                                        <TextBlock Text="🏷️ Tags" 
+                                                  FontWeight="SemiBold" 
+                                                  FontSize="13"
+                                                  Margin="0,0,0,8"
+                                                  Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                        <ListBox x:Name="lstTags" 
+                                                Height="120" 
+                                                SelectionMode="Multiple" 
+                                                DisplayMemberPath="Name" 
+                                                Background="{DynamicResource CardBrush}"
+                                                Foreground="{DynamicResource TextBrush}"
+                                                BorderBrush="#E0E0E0"
+                                                Margin="0,0,0,10"/>
+
+                                        <!-- Custom Tag -->
+                                        <TextBox x:Name="txtCustomTag" 
+                                                Style="{StaticResource ModernTextBox}"
+                                                ToolTip="Enter custom tag name"
+                                                Margin="0,0,0,8"/>
+                                        <Button x:Name="btnAddCustomTag" 
+                                               Content="+ Add Tag" 
+                                               Style="{StaticResource SecondaryButton}"
+                                               HorizontalAlignment="Stretch"
+                                               Click="BtnAddCustomTag_Click"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+
+                        <!-- Bottom Section: Action Buttons -->
+                        <Border Grid.Row="2" 
+                               BorderBrush="#E0E0E0" 
+                               BorderThickness="0,1,0,0" 
+                               Padding="0,25,0,0"
+                               Margin="0,25,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button x:Name="btnSave" 
+                                       Content="💾 Save Entry" 
+                                       Style="{StaticResource PrimaryButton}"
+                                       Margin="0,0,10,0" 
+                                       Click="BtnSave_Click"/>
+                                <Button x:Name="btnDelete" 
+                                       Content="🗑️ Delete" 
+                                       Style="{StaticResource DeleteButton}"
+                                       Margin="0,0,10,0" 
+                                       Click="BtnDelete_Click"/>
+                                <Button x:Name="btnCancel" 
+                                       Content="Cancel" 
+                                       Style="{StaticResource SecondaryButton}"
+                                       Click="BtnCancel_Click"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
